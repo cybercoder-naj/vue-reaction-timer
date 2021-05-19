@@ -2,11 +2,16 @@
   <div class="block" v-if="showBlock" @click="stopTimer">
       Click Me
   </div>
+  <div class="placeholder" v-if="!showBlock">
+      Click the green box that will appear here as fast as you can.
+  </div>
 </template>
 
 <script>
 export default {
+    name: 'Block',
     props: ['delay'],
+    emits: ['end'],
     data() {
         return {
             showBlock: false,
@@ -35,7 +40,7 @@ export default {
 </script>
 
 <style>
-.block {
+.block, .placeholder {
     width: 400px;
     border-radius: 20px;
     background: #0faf87;
@@ -43,5 +48,10 @@ export default {
     text-align: center;
     padding: 100px 0;
     margin: 40px auto;
+}
+.placeholder {
+    background: white;
+    color: black;
+    border: 2px dashed black;
 }
 </style>
